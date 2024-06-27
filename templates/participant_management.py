@@ -1,8 +1,11 @@
+import sqlite3
+
 import customtkinter as ctk
 from utils.validation import validate_email, validate_phone
 from logging_function.logger_function import get_logger
 from db.database import create_connection
 from utils.ctk_custom import show_error, show_info
+from CTkListbox import *
 
 logger = get_logger(__name__)
 
@@ -29,6 +32,14 @@ class ParticipantManagementPage(ctk.CTkFrame):
         self.button_save = ctk.CTkButton(self, text="Save", command=self.save_participant)
         self.button_save.pack(pady=10)
 
+        self.participant_listbox = CTkListbox(self)
+        self.participant_listbox.pack(pady=12, padx=10, fill="both", expand=True)
+
+        self.delete_button = ctk.CTkButton(self, text="Delete Selcted", command=self.delete_selected_participant)
+        self.delete_button.pack(pady=12, padx=10)
+
+        self.load_participants()
+
     def save_participant(self):
         name = self.entry_name.get()
         email = self.entry_email.get()
@@ -52,3 +63,33 @@ class ParticipantManagementPage(ctk.CTkFrame):
 
         logger.info(f"Participant {name} added successfully")
         show_info("Success", "Participant added successfully")
+
+        self.load_participants()
+
+    def get_participants(self):
+        conn = create_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM participants")
+        participants = cursor.fetchall()
+        conn.close()
+        return participants
+
+    def delete_participant(self, participant_id):
+        conn = create_connection()
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM participants WHERE id = ?", (participant_id))
+        conn.commit()
+        conn.close()
+
+    def load_participants(self):
+        participants = self.get_participants()
+        self.participant_listbox.delete(0, ctk.END)
+        for participant in participants:
+            self.participant_listbox.insert(ctk.END, f"{participant[0]}: {participant[1]} ({participant[2]})")
+
+    def delete_selected_participant(self):
+        selected = self.participant_listbox.curselection()
+        if selected:
+            participant_id = self.participant_listbox.get(selected[0]).split(":")[0]
+            self.delete_participant(participant_id)
+            self.load_participants()

@@ -7,3 +7,4 @@ class Participant:
         self.team_id = team_id
         self.role = role
         self.password_hash = password_hash
+
