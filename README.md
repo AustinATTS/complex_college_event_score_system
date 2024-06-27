@@ -66,12 +66,12 @@ For any questions or issues regarding the Tournament Management System, please c
 ## Additional Information
 
 - **Folder Structure:**
-  - \`main.py\`: Entry point of the application.
-  - \`templates/\`: Directory containing UI templates (e.g., login, dashboards).
-  - \`utils/\`: Utility functions and modules (e.g., authentication, database handling).
-  - \`db/\`: Database-related scripts and configurations.
-  - \`requirements.txt\`: List of Python dependencies for the project.
-  - \`README.md\`: This file, providing project information and instructions.
+  - `main.py`: Entry point of the application.
+  - `templates/`: Directory containing UI templates (e.g., login, dashboards).
+  - `utils/`: Utility functions and modules (e.g., authentication, database handling).
+  - `db/`: Database-related scripts and configurations.
+  - `requirements.txt`: List of Python dependencies for the project.
+  - `README.md`: This file, providing project information and instructions.
 
 - **Contributing:**
   - Contributions are welcome! Fork the repository, make your changes, and submit a pull request.
