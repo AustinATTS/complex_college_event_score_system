@@ -28,28 +28,28 @@ For any questions or issues regarding the Tournament Management System, please c
 
 1. Clone the repository:
 
-   \`\`\`bash
+   ```bash
    git clone https://github.com/AustinATTS/complex_college_event_score_system.git
-   \`\`\`
+   ```
 
 2. Navigate into the project directory:
 
-   \`\`\`bash
+   ```bash
    cd your-repo
-   \`\`\`
+   ```
 
 3. Create and activate a virtual environment (optional but recommended):
 
-   \`\`\`bash
+   ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows use \`venv\Scripts\activate\`
-   \`\`\`
+   ```
 
 4. Install dependencies:
 
-   \`\`\`bash
+   ```bash
    pip install -r requirements.txt
-   \`\`\`
+   ```
 
 ### Usage
 
@@ -57,9 +57,9 @@ For any questions or issues regarding the Tournament Management System, please c
 
 2. Run the main application:
 
-   \`\`\`bash
+   ```bash
    python main.py
-   \`\`\`
+   ```
 
 3. The application should start, displaying the login page. Use valid credentials to log in and access the respective dashboard.
 
