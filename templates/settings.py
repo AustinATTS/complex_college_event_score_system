@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from db.database import create_connection
-from logging.logger import get_logger
+from logging_function.logger_function import get_logger
 
 logger = get_logger(__name__)
 

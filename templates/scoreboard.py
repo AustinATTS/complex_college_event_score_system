@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from tkinter import ttk  # Import ttk module for Treeview
 from db.database import create_connection
 
 class ScoreboardPage(ctk.CTkFrame):
@@ -15,7 +16,8 @@ class ScoreboardPage(ctk.CTkFrame):
         scores = cursor.fetchall()
         conn.close()
 
-        self.tree = ctk.CTkTreeview(self, columns=("Event ID", "Participant ID", "Score"), show="headings")
+        # Create Treeview using ttk module
+        self.tree = ttk.Treeview(self, columns=("Event ID", "Participant ID", "Score"), show="headings")
         self.tree.heading("Event ID", text="Event ID")
         self.tree.heading("Participant ID", text="Participant ID")
         self.tree.heading("Score", text="Score")

@@ -8,7 +8,7 @@ def hash_password(password):
 def login_user(username, password):
     conn = create_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT id, role, password_hash FROM users WHERE name = ?", (username,))
+    cursor.execute("SELECT id, role, password_hash FROM users WHERE username = ?", (username,))
     user = cursor.fetchone()
     conn.close()
 
@@ -16,7 +16,11 @@ def login_user(username, password):
         global logged_in_user
         logged_in_user = {"id": user[0], "role": user[1]}
         return True
-    return False
+    else:
+        print("yes")
+        print(hashlib.sha256(password.encode()).hexdigest())
+        print(user[2])
+        return False
 
 def get_logged_in_user():
     return logged_in_user

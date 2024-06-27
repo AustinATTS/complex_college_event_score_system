@@ -2,7 +2,8 @@ import customtkinter as ctk
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from db.database import create_connection
-from logging.logger import get_logger
+from logging_function.logger_function import get_logger
+from utils.ctk_custom import show_info
 
 logger = get_logger(__name__)
 
@@ -33,4 +34,4 @@ class ReportGenerationPage(ctk.CTkFrame):
 
         c.save()
         logger.info(f"Report generated at {report_file}")
-        ctk.CTkMessageBox.show_info("Success", f"Report generated at {report_file}")
+        show_info("Success", f"Report generated at {report_file}")

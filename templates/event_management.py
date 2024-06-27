@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from db.database import create_connection
-from logging.logger import get_logger
+from logging_function.logger_function import get_logger
+from utils.ctk_custom import show_info
 
 logger = get_logger(__name__)
 
@@ -51,4 +52,4 @@ class EventManagementPage(ctk.CTkFrame):
         conn.close()
 
         logger.info(f"Event {name} added successfully")
-        ctk.CTkMessageBox.show_info("Success", "Event added successfully")
+        show_info("Success", "Event added successfully")

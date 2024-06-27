@@ -1,7 +1,8 @@
 import customtkinter as ctk
 from utils.validation import validate_email, validate_phone
-from logging.logger import get_logger
+from logging_function.logger_function import get_logger
 from db.database import create_connection
+from utils.ctk_custom import show_error, show_info
 
 logger = get_logger(__name__)
 
@@ -35,12 +36,12 @@ class ParticipantManagementPage(ctk.CTkFrame):
 
         if not validate_email(email):
             logger.error("Invalid email format")
-            ctk.CTkMessageBox.show_error("Error", "Invalid email format")
+            show_error("Error", "Invalid email format")
             return
 
         if not validate_phone(phone):
             logger.error("Invalid phone format")
-            ctk.CTkMessageBox.show_error("Error", "Invalid phone format")
+            show_error("Error", "Invalid phone format")
             return
 
         conn = create_connection()
@@ -50,4 +51,4 @@ class ParticipantManagementPage(ctk.CTkFrame):
         conn.close()
 
         logger.info(f"Participant {name} added successfully")
-        ctk.CTkMessageBox.show_info("Success", "Participant added successfully")
+        show_info("Success", "Participant added successfully")

@@ -1,12 +1,14 @@
 import customtkinter as ctk
 from utils.auth import login_user
 from logging_function.logger_function import get_logger
+from utils.ctk_custom import show_error
 
 logger = get_logger(__name__)
 
 class LoginPage(ctk.CTkFrame):
     def __init__(self, master):
         super().__init__(master)
+
         self.master = master
 
         self.label_username = ctk.CTkLabel(self, text="Username")
@@ -25,9 +27,14 @@ class LoginPage(ctk.CTkFrame):
     def login(self):
         username = self.entry_username.get()
         password = self.entry_password.get()
+
         success = login_user(username, password)
         if success:
-            self.master.show_dashboard()
+            # Check if the master object has the show_dashboard method
+            if hasattr(self.master, 'show_dashboard') and callable(getattr(self.master, 'show_dashboard')):
+                self.master.show_dashboard()
+            else:
+                logger.error("MainApp does not have show_dashboard method")
         else:
             logger.error("Login failed")
-            ctk.CTkMessageBox.show_error("Login failed", "Invalid username or password")
+            show_error("Login failed", "Invalid username or password")

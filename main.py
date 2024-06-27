@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from templates.login import LoginPage
+from templates.main import MainWindow  # Import MainWindow from the appropriate location
 from db.database import initialize_db
 
 initialize_db()
@@ -10,8 +10,8 @@ class MainApp(ctk.CTk):
         self.title("Tournament Management System")
         self.geometry("800x600")
 
-        self.login_page = LoginPage(self)
-        self.login_page.pack(fill="both", expand=True)
+        self.main_window = MainWindow(self)  # Create MainWindow instance
+        self.main_window.pack(fill="both", expand=True)  # Pack MainWindow instance
 
 if __name__ == "__main__":
     app = MainApp()

@@ -6,6 +6,8 @@ reportlab
 darkdetect
 packaging
 customtkinter
+ctkmessagebox
+ctklistbox
 hashlib
 json
 os

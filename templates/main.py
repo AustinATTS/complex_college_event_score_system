@@ -25,10 +25,14 @@ class MainWindow(ctk.CTkFrame):
 
     def show_dashboard(self):
         user = get_logged_in_user()
-        if user.role == 'admin':
-            self.admin_dashboard.pack(fill="both", expand=True)
-        elif user.role == 'judge':
-            self.judge_dashboard.pack(fill="both", expand=True)
+        if user:
+            if user['role'] == 'admin':
+                self.admin_dashboard.pack(fill="both", expand=True)
+            elif user['role'] == 'judge':
+                self.judge_dashboard.pack(fill="both", expand=True)
+            else:
+                self.user_dashboard.pack(fill="both", expand=True)
+            self.login_page.pack_forget()
         else:
-            self.user_dashboard.pack(fill="both", expand=True)
-        self.login_page.pack_forget()
+            print("No user logged in")
+            self.show_login_page()
