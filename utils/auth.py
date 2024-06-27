@@ -8,7 +8,7 @@ def hash_password(password):
 def login_user(username, password):
     conn = create_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT id, role, password_hash FROM participants WHERE name = ?", (username,))
+    cursor.execute("SELECT id, role, password_hash FROM users WHERE name = ?", (username,))
     user = cursor.fetchone()
     conn.close()
 
