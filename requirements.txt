@@ -1,3 +1,12 @@
-customtkinter
-reportlab
 sqlite3
+logging
+chardet
+pillow
+reportlab
+darkdetect
+packaging
+customtkinter
+hashlib
+json
+os
+re
