@@ -17,9 +17,6 @@ def login_user(username, password):
         logged_in_user = {"id": user[0], "role": user[1]}
         return True
     else:
-        print("yes")
-        print(hashlib.sha256(password.encode()).hexdigest())
-        print(user[2])
         return False
 
 def get_logged_in_user():
